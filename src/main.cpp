@@ -1,4 +1,3 @@
-#include <Arduino.h>
 /*
  * REVISION NOTES:
  * 
@@ -49,9 +48,9 @@
 
 //constants related to robot geometry
 #define GEAR_RATIO 1.2 //fixme
-#define L1 30.0 //(mm) fixme
-#define L2 66.0//fixme
-#define L3 44.0//fixme
+#define L1 50.0 //(mm) fixme
+#define L2 54.0//fixme
+#define L3 116.0//fixme
 
 //pin definitions
 #define FL1 3 //front left leg, first servo     fixme
@@ -144,7 +143,33 @@ void setup()
 
 void loop() 
 {
- //Nothing here yet :)
+ //TEST RUN
+
+ for(int i = 0; i < 180, i++)
+ {
+  FR.Goto_Polar(i,i/2,i);
+  delay(10);
+ }
+ delay(1000);
+ for(int i = 0; i < 100; i++)
+ {
+  FR.Goto_Xyz(20,20,i);
+  delay(10);
+ }
+ delay(1000);
+ for(int i = 0; i < 100; i++)
+ {
+  FR.Goto_Xyz(20,i,0);
+  delay(10);
+ }
+ delay(1000);
+ for(int i = 0; i < 100; i++)
+ {
+  FR.Goto_Xyz(i,20,0);
+  delay(10);
+ }
+ delay(1000);
+  
 }
 
 
@@ -333,5 +358,7 @@ void Spider_Dog_Leg::Attach(const int pin_one,const int pin_two,const int pin_th
   two.attach(pin_two);
   three.attach(pin_three);
 }
+
+
 
 
